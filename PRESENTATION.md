@@ -228,6 +228,41 @@ Every layer has holes. The point is: the holes don't line up.
 
 Don't try to fix all 10 at once. Fix the ones that match your attack surface.
 
+#### You Don't Need Fancy Tools — Start With What You Have
+
+Half of these vulnerabilities are catchable with SAST and tools your team already runs:
+
+| Vulnerability | Catchable with | Tool you probably already have |
+|---|---|---|
+| LLM02: Secrets in prompts | Secret scanning | `detect-secrets`, `trufflehog`, GitHub secret scanning, `gitleaks` |
+| LLM05: XSS via LLM output | SAST | `semgrep`, `bandit` — flag `| safe` on untrusted input |
+| LLM07: Secrets in system prompts | `grep` | `grep -r 'system.*prompt' --include='*.py' \| grep -i 'key\|secret\|password'` |
+| LLM03: Unpinned dependencies | Dependency scanning | `npm audit`, `pip audit`, `snyk`, Dependabot |
+| LLM10: No token limits | Code review | Search for `maxTokens` — if it's missing, that's the bug |
+| LLM06: Unrestricted tools | Code review | List every tool the agent can call — if there's no tier system, flag it |
+
+The remaining ones (LLM01, 04, 08, 09) need runtime defenses — input classifiers, output filters, trust scoring. But **6 out of 10 are catchable before you even deploy.**
+
+**Semgrep rule example** — flag `| safe` on LLM output:
+```yaml
+rules:
+  - id: llm-output-xss
+    pattern: "{{ $VAR | safe }}"
+    message: "LLM output rendered as raw HTML — potential XSS"
+    severity: WARNING
+```
+
+**Pre-commit hook** — block secrets in prompt files:
+```bash
+# .pre-commit-config.yaml
+- repo: https://github.com/Yelp/detect-secrets
+  hooks:
+    - id: detect-secrets
+      args: ['--baseline', '.secrets.baseline']
+```
+
+The point: LLM security isn't a new discipline. It's applying existing AppSec practices to a new attack surface.
+
 #### Architecture Patterns for Secure LLM Apps
 
 1. **Separation of concerns** — system prompts ≠ secrets, tools ≠ unrestricted access

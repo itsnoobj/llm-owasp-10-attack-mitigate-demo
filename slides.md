@@ -454,6 +454,27 @@ Every layer has holes. The point is: **the holes don't line up.**
 
 <!-- end_slide -->
 
+You Don't Need Fancy Tools
+===
+
+6 out of 10 are catchable with tools you already run:
+
+| Vulnerability | Catch it with |
+|---|---|
+| Secrets in prompts (02, 07) | `detect-secrets`, `gitleaks`, GitHub secret scanning |
+| XSS via LLM output (05) | `semgrep` — flag `\| safe` on untrusted input |
+| Unpinned deps (03) | `npm audit`, `pip audit`, Dependabot |
+| No token limits (10) | Code review — search for missing `maxTokens` |
+| Unrestricted tools (06) | Code review — list every tool, check for tiers |
+
+<!-- pause -->
+
+The remaining 4 (injection, poisoning, RAG, misinformation) need **runtime** defenses.
+
+But half the OWASP Top 10 is catchable **before you deploy.**
+
+<!-- end_slide -->
+
 🎯 What to Fix First
 ===
 
