@@ -22,8 +22,8 @@ class LLM:
             try:
                 import boto3
                 self._client = boto3.client("bedrock-runtime", region_name=REGION)
-                # Quick validation — will fail fast if no creds
-                self._client.meta.region_name
+                # Validate creds with a real API call (lightweight)
+                boto3.client("bedrock", region_name=REGION).list_foundation_models(maxResults=1)
                 self.mode = "bedrock"
             except Exception:
                 if mode == "bedrock":

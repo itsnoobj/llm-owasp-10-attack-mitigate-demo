@@ -136,7 +136,8 @@ async function search() {
   const query = document.getElementById('query').value.trim();
   if (!query) return;
   const trust = document.getElementById('trust-toggle').checked;
-  const data = await (await fetch('/search', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query, mode, trust_scoring: trust}) })).json();
+  const data = await safeFetch('/search', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query, mode, trust_scoring: trust}) });
+  if (data.error) return;
   let html = '';
   data.results.forEach((r, i) => {
     const isPoisoned = r.source.includes('community_wiki');

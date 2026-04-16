@@ -2,7 +2,7 @@
 
 BASE_CSS = """
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
+body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; background: #0f0f1a; color: #e0e0e0; min-height: 100vh; }
 .container { max-width: 960px; margin: 0 auto; padding: 20px; }
 h1 { font-size: 1.6rem; margin-bottom: 4px; }
 h2 { font-size: 1.1rem; color: #888; font-weight: 400; margin-bottom: 20px; }
@@ -103,11 +103,42 @@ def page(title, subtitle, body_html, extra_css="", extra_js="", guide=""):
       if (g) g.classList.add('guide-show');
     }
     """ if guide else ''
+    shared_js = """
+    function safeText(text) {
+      var d = document.createElement('div');
+      d.textContent = text;
+      return d.innerHTML;
+    }
+    function showTyping(containerId) {
+      var el = document.getElementById(containerId);
+      if (!el) return;
+      var div = document.createElement('div');
+      div.className = 'msg msg-bot typing-msg';
+      div.innerHTML = '<div class="msg-label">...</div><div class="msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+      el.appendChild(div);
+      el.scrollTop = el.scrollHeight;
+    }
+    function hideTyping(containerId) {
+      var el = document.getElementById(containerId);
+      if (!el) return;
+      var t = el.querySelector('.typing-msg');
+      if (t) t.remove();
+    }
+    async function safeFetch(url, opts) {
+      try {
+        var res = await fetch(url, opts);
+        if (!res.ok) throw new Error('Server error: ' + res.status);
+        return await res.json();
+      } catch(e) {
+        console.error(e);
+        return {error: e.message};
+      }
+    }
+    """
     return f"""<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title}</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>{BASE_CSS}{extra_css}</style>
 </head><body>
 <div class="container">
@@ -118,5 +149,5 @@ def page(title, subtitle, body_html, extra_css="", extra_js="", guide=""):
 {guide_html}
 {body_html}
 </div>
-<script>{guide_js}{extra_js}</script>
+<script>{shared_js}{guide_js}{extra_js}</script>
 </body></html>"""

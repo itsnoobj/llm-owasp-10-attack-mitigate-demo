@@ -74,7 +74,7 @@ brew install presenterm
 presenterm slides.md
 ```
 
-- `slides.md` — presenterm slide deck (30 slides)
+- `slides.md` — presenterm slide deck (~35 slides)
 - `PRESENTATION.md` — full speaker notes, narrative arc, timing guide
 
 ## 📁 Structure

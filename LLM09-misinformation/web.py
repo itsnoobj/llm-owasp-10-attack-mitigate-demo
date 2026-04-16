@@ -74,17 +74,10 @@ class AskRequest(BaseModel):
 
 
 def generate_response(req: AskRequest) -> dict:
-    """Generate an answer with citations. In live mode, uses real LLM."""
+    """Generate an answer with citations. Always use canned answer+citations for coherence."""
     topic = match_topic(req.query)
     h = HALLUCINATIONS[topic]
-
-    if llm.is_live and not req.verify:
-        answer = llm.invoke(
-            req.query,
-            system="Answer with specific citations, case names, DOIs, and statistics. Be confident and detailed.",
-        )
-        return {"answer": answer, "citations": h["citations"]}
-
+    # Always use canned responses so citations match the answer text
     return {"answer": h["answer"], "citations": h["citations"]}
 
 
@@ -123,7 +116,8 @@ async function ask(verify) {
   document.getElementById('answer').innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
   document.getElementById('citations-box').style.display = 'none';
   document.getElementById('verdict').style.display = 'none';
-  const data = await (await fetch('/ask', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query, verify}) })).json();
+  const data = await safeFetch('/ask', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({query, verify}) });
+  if (data.error) { document.getElementById('answer').innerHTML = '<span style="color:#e94560;">Error: '+data.error+'</span>'; return; }
   document.getElementById('answer').innerHTML = data.answer;
   document.getElementById('citations-box').style.display = 'block';
   document.getElementById('citations-title').innerHTML = verify ? '🔍 Citation Verification Results' : '📋 Citations (unverified)';

@@ -76,7 +76,8 @@ function setMode(m) {
 function addMsg(text, sender, cls) {
   const chat = document.getElementById('chat');
   const label = sender === 'user' ? 'You' : 'FinanceBot';
-  chat.innerHTML += '<div class="msg msg-'+sender+' '+(cls||'')+'"><div class="msg-label">'+label+'</div><div class="msg-bubble">'+text.replace(/\\n/g,'<br>')+'</div></div>';
+  const content = sender === 'user' ? safeText(text) : text.replace(/\\n/g,'<br>');
+  chat.innerHTML += '<div class="msg msg-'+sender+' '+(cls||'')+'"><div class="msg-label">'+label+'</div><div class="msg-bubble">'+content+'</div></div>';
   chat.scrollTop = chat.scrollHeight;
 }
 function checkLeaks(text) {
@@ -91,7 +92,10 @@ async function send(text) {
   const msg = text || input.value.trim();
   if (!msg) return; input.value = '';
   addMsg(msg, 'user', '');
-  const data = await (await fetch('/chat', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({message:msg, mode}) })).json();
+  showTyping('chat');
+  const data = await safeFetch('/chat', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({message:msg, mode}) });
+  hideTyping('chat');
+  if (data.error) return;
   addMsg(data.response, 'bot', data.leaked ? 'hijacked' : (mode==='defended' ? 'defended' : ''));
   checkLeaks(data.response);
 }

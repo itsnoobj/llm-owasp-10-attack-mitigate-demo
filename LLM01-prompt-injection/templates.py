@@ -78,9 +78,10 @@ let sessionId = 'sess_' + Math.random().toString(36).substr(2, 9);
 function addMsg(text, sender, cls) {
   const chat = document.getElementById('chat');
   const label = sender === 'user' ? 'You' : 'TravelBot';
+  const content = sender === 'user' ? safeText(text) : text.replace(/\\n/g, '<br>');
   chat.innerHTML += `<div class="msg msg-${sender} ${cls||''}">
     <div class="msg-label">${label}</div>
-    <div class="msg-bubble">${text.replace(/\\n/g, '<br>')}</div>
+    <div class="msg-bubble">${content}</div>
   </div>`;
   chat.scrollTop = chat.scrollHeight;
 }
@@ -120,11 +121,13 @@ async function send(text) {
   input.value = '';
   addMsg(msg, 'user');
   addLog('User: ' + msg.substring(0, 60) + '...', 'warn');
-  const res = await fetch('/chat', {
+  showTyping('chat');
+  const data = await safeFetch('/chat', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: msg, mode, session_id: sessionId }),
   });
-  const data = await res.json();
+  hideTyping('chat');
+  if (data.error) { addLog('❌ ' + data.error, 'danger'); return; }
   addMsg(data.response, 'bot', data.hijacked ? 'hijacked' : (mode === 'defended' ? 'defended' : ''));
   if (data.hijacked) {
     addLog('🚨 BOT HIJACKED — personality overridden!', 'danger');
@@ -138,11 +141,13 @@ async function inject() {
   const payload = `""" + INJECTION_PAYLOAD.replace('`', '\\`') + """`;
   addMsg(payload, 'user');
   addLog('💉 INJECTION PAYLOAD SENT', 'danger');
-  const res = await fetch('/chat', {
+  showTyping('chat');
+  const data = await safeFetch('/chat', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: payload, mode, session_id: sessionId, inject: true }),
   });
-  const data = await res.json();
+  hideTyping('chat');
+  if (data.error) { addLog('❌ ' + data.error, 'danger'); return; }
   addMsg(data.response, 'bot', data.hijacked ? 'hijacked' : 'defended');
   if (data.hijacked) addLog('🚨 INJECTION SUCCEEDED — bot identity overridden!', 'danger');
   else addLog('🛡️ Injection blocked by hardened system prompt', 'safe');

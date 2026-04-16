@@ -47,8 +47,8 @@ function setMode(m) {
 function addMsg(text, sender, cls) {
   const chat = document.getElementById('chat');
   const label = sender === 'user' ? 'You' : 'CodeAssist';
-  const formatted = text.replace(/```([\\s\\S]*?)```/g, '<pre style="background:#0a0a14;padding:8px;border-radius:4px;margin:6px 0;font-size:0.8rem;">$1</pre>').replace(/\\n/g,'<br>');
-  chat.innerHTML += '<div class="msg msg-'+sender+' '+(cls||'')+'"><div class="msg-label">'+label+'</div><div class="msg-bubble">'+formatted+'</div></div>';
+  const content = sender === 'user' ? safeText(text) : text.replace(/```([\\s\\S]*?)```/g, '<pre style="background:#0a0a14;padding:8px;border-radius:4px;margin:6px 0;font-size:0.8rem;">$1</pre>').replace(/\\n/g,'<br>');
+  chat.innerHTML += '<div class="msg msg-'+sender+' '+(cls||'')+'"><div class="msg-label">'+label+'</div><div class="msg-bubble">'+content+'</div></div>';
   chat.scrollTop = chat.scrollHeight;
 }
 async function send(text) {
@@ -57,8 +57,10 @@ async function send(text) {
   if (!msg) return;
   input.value = '';
   addMsg(msg, 'user', '');
-  const res = await fetch('/chat', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({message: msg, mode}) });
-  const data = await res.json();
+  showTyping('chat');
+  const data = await safeFetch('/chat', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({message: msg, mode}) });
+  hideTyping('chat');
+  if (data.error) return;
   addMsg(data.response, 'bot', data.leaked ? 'hijacked' : (mode==='defended' ? 'defended' : ''));
   if (data.leaks && data.leaks.length > 0) {
     document.getElementById('scanner').style.display = 'block';
