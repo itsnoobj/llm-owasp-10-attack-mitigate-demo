@@ -1,0 +1,9 @@
+rich
+colorama
+flask
+markupsafe
+fastapi         # Web UI demos
+uvicorn         # ASGI server for FastAPI
+boto3           # Optional — for live Bedrock mode
+scikit-learn    # LLM04 — real model poisoning demo
+chromadb        # LLM08 — real RAG poisoning demo
