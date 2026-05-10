@@ -7,3 +7,4 @@ uvicorn==0.44.0
 boto3==1.42.89        # Optional — for live Bedrock mode
 scikit-learn==1.8.0   # LLM04 — real model poisoning
 chromadb==1.5.7       # LLM08 — real RAG poisoning
+qrcode[pil]==8.2      # ASCII smuggling QR demo

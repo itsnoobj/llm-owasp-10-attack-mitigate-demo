@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🛡️ OWASP Top 10 for LLM Applications</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0d1117; color: #c9d1d9;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; min-height: 100vh; padding: 2rem;
+    text-align: center;
+  }
+  .reveal { animation: fadeIn 0.5s ease-in; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; } }
+  h1 { font-size: 2rem; margin-bottom: 1rem; }
+  .emoji { font-size: 4rem; margin-bottom: 1rem; }
+  .msg { font-size: 1.2rem; line-height: 1.8; max-width: 600px; margin-bottom: 2rem; }
+  .highlight { color: #f85149; font-weight: bold; }
+  .green { color: #3fb950; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .btn {
+    display: inline-block; padding: 0.8rem 2rem; background: #238636;
+    color: #fff; border-radius: 6px; font-size: 1.1rem; margin-top: 1rem;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn:hover { background: #2ea043; text-decoration: none; }
+  code { background: #161b22; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="reveal">
+  <div class="emoji">🎣</div>
+  <h1>You just got <span class="highlight">ASCII Smuggled</span></h1>
+  <div class="msg">
+    <p>The QR code on the slide said:</p>
+    <p><code>github.com/itsnoobj/llm-owasp-10-attack-mitigate-demo</code></p>
+    <br>
+    <p>But it actually encoded: <span class="highlight">noobj.me/talk</span></p>
+    <br>
+    <p>What you see isn't always what's there.<br>
+    That's <span class="green">ASCII smuggling</span> — invisible Unicode characters
+    that hide payloads in plain sight.</p>
+  </div>
+  <a class="btn" href="https://github.com/itsnoobj/llm-owasp-10-attack-mitigate-demo">
+    👉 Take me to the real repo
+  </a>
+</div>
+</body>
+</html>

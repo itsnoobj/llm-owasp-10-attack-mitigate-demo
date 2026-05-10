@@ -47,8 +47,9 @@ The Interface IS the Attack Surface
 **Traditional apps:**
 
 ```
-input → validation → logic → output
-         (you control the logic)
+  User Input ──▶ [Validation] ──▶ [Your Code] ──▶ Output
+                      🔒              🔒
+              (you control this)  (deterministic)
 ```
 
 <!-- pause -->
@@ -56,8 +57,11 @@ input → validation → logic → output
 **LLM apps:**
 
 ```
-input → ??? → output
-  (the model IS the logic, and it's malleable)
+  User Input ──▶ [  ???  ] ──▶ Output
+                     🧠
+              (the model IS the logic)
+              (malleable by input!)
+              (instructions = data = same channel)
 ```
 
 <!-- pause -->
@@ -68,6 +72,16 @@ LLMs are the first software component where **untrusted user input** and **syste
 
 🧠 The Confused Deputy Problem
 ===
+
+```
+  ┌─────────────┐         ┌─────────────┐
+  │   Attacker  │         │   LLM Agent │
+  │  (no perms) │────────▶│ (has perms) │──────▶ 💀 Damage
+  └─────────────┘         └─────────────┘
+        ↑                        ↑
+   "Just data"            "Treats it as
+                           instructions"
+```
 
 Norm Hardy, **1988** — a program tricked into misusing its authority.
 
@@ -247,6 +261,16 @@ He was sanctioned **$5,000**.
 🧠 Shannon's Information Theory
 ===
 
+```
+  "The capital of France is ___"
+
+  Token probabilities:
+    Paris     ████████████████████  92%
+    Lyon      ██                    3%
+    London    █                     1%
+    Narnia    ░                     0.01%  ← still possible!
+```
+
 An LLM generates tokens by predicting **probability distributions**.
 
 It has no concept of "true" — only "likely."
@@ -304,6 +328,23 @@ Your AI agent's promises are **your** promises.
 
 🧠 Least Privilege (1975)
 ===
+
+```
+  ┌──────────────────────────────────────────┐
+  │         What the agent NEEDS:            │
+  │         📖 SELECT (read data)            │
+  ├──────────────────────────────────────────┤
+  │         What the agent GOT:              │
+  │         📖 SELECT                        │
+  │         ✏️  INSERT, UPDATE               │
+  │         🗑️  DELETE                       │
+  │         💀 DROP TABLE                    │
+  │         ☠️  DROP DATABASE                │
+  │         🔥 EXECUTE SHELL                 │
+  └──────────────────────────────────────────┘
+```
+
+<!-- pause -->
 
 Saltzer & Schroeder:
 
@@ -436,6 +477,8 @@ Act 3: The Defense Playbook
 You Already Know This
 ===
 
+![](assets/swiss-cheese.png)
+
 ```
 API Best Practice                →  LLM Equivalent
 ────────────────────────────────────────────────────
@@ -518,13 +561,17 @@ Goodhart's Law
 
 <!-- pause -->
 
-LLMs are optimized for **"helpfulness"** via RLHF.
-
-That metric became the target.
-
-<!-- pause -->
-
-Now helpfulness and security are **fundamentally in tension.**
+```
+  Training objective: "Be helpful" ──────────────────▶ 📈 Maximize
+                                                          │
+  Side effects:                                           │
+    • Leaks secrets (being helpful!)                      │
+    • Follows injections (being compliant!)               │
+    • Fabricates citations (being thorough!)              │
+    • Drops tables (being efficient!)                     │
+                                                          ▼
+                                              🎯 Helpful AND Dangerous
+```
 
 <!-- end_slide -->
 
@@ -610,10 +657,18 @@ Thank You
 
 🔗 **OWASP Top 10 for LLMs** — genai.owasp.org/llm-top-10
 
-🔗 **All demo code** — open source, runnable tonight
-
 🔗 **Bedrock Guardrails** — docs.aws.amazon.com/bedrock
 
-<!-- new_lines: 2 -->
+<!-- new_lines: 1 -->
+
+Scan for all demo code & slides 👇
+
+![QR](ascii-smuggling/qr.png)
+
+`github.com/itsnoobj/llm-owasp-10-attack-mitigate-demo`
+
+<!-- new_lines: 1 -->
+
+<!-- speaker_note: "ASCII SMUGGLING DEMO: The URL text on this slide contains 256 invisible Unicode tag characters encoding a prompt injection. Ask someone to copy the URL from smuggled_url.txt and paste it into Claude/ChatGPT asking 'What URL is this? Should I visit it?' — the LLM reads the hidden injection and tells them to go to noobj.me. Then run: python3 ascii-smuggling/reveal.py ascii-smuggling/smuggled_url.txt to show the hidden payload. One last attack for the road." -->
 
 _Questions?_
