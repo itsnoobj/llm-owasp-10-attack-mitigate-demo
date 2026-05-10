@@ -2,13 +2,19 @@
 title: "Securing the **AI Frontier**"
 sub_title: "OWASP Top 10 for LLM Applications — Live"
 author: Jeevan Chikkegowda
+theme:
+  override:
+    slide_title:
+      colors:
+        foreground: "c4a7e7"
 ---
 
 <!-- jump_to_middle -->
 <!-- alignment: center -->
 
+<!-- font_size: 2 -->
+
 What if I told you a **15-word sentence** can hijack most AI assistants in production today?
-===
 
 <!-- pause -->
 
@@ -44,25 +50,7 @@ Act 1: The Trust Problem
 The Interface IS the Attack Surface
 ===
 
-**Traditional apps:**
-
-```
-  User Input ──▶ [Validation] ──▶ [Your Code] ──▶ Output
-                      🔒              🔒
-              (you control this)  (deterministic)
-```
-
-<!-- pause -->
-
-**LLM apps:**
-
-```
-  User Input ──▶ [  ???  ] ──▶ Output
-                     🧠
-              (the model IS the logic)
-              (malleable by input!)
-              (instructions = data = same channel)
-```
+![](assets/attack-surface.png)
 
 <!-- pause -->
 
@@ -73,17 +61,9 @@ LLMs are the first software component where **untrusted user input** and **syste
 🧠 The Confused Deputy Problem
 ===
 
-```
-  ┌─────────────┐         ┌─────────────┐
-  │   Attacker  │         │   LLM Agent │
-  │  (no perms) │────────▶│ (has perms) │──────▶ 💀 Damage
-  └─────────────┘         └─────────────┘
-        ↑                        ↑
-   "Just data"            "Treats it as
-                           instructions"
-```
+![](assets/confused-deputy.png)
 
-Norm Hardy, **1988** — a program tricked into misusing its authority.
+LLMs are the **ultimate confused deputy:**
 
 <!-- pause -->
 
@@ -129,7 +109,7 @@ Let me show you.
 🌟 HERO DEMO 1
 ===
 
-💉 <span style="color: #4ecca3">LLM01: Prompt Injection</span>
+💉 <span style="color: #5cb8e4">LLM01: Prompt Injection</span>
 
 `python3 LLM01-prompt-injection/web.py`
 
@@ -167,19 +147,19 @@ Act 2: It Breaks.
 
 <!-- pause -->
 
-🔑 **<span style="color: #4ecca3">LLM07: System Prompt Leakage</span>**
+🔑 **<span style="color: #5cb8e4">LLM07: System Prompt Leakage</span>**
 Translation trick extracts pricing, admin codes, GDPR violations.
 _Fix: Never put secrets in prompts._
 
 <!-- pause -->
 
-🔓 **<span style="color: #4ecca3">LLM02: Sensitive Info Disclosure</span>**
+🔓 **<span style="color: #5cb8e4">LLM02: Sensitive Info Disclosure</span>**
 Coding assistant dumps `.env` secrets as "helpful examples."
 _Fix: Output regex filters + don't put secrets in context._
 
 <!-- pause -->
 
-🌐 **<span style="color: #4ecca3">LLM05: Improper Output Handling</span>**
+🌐 **<span style="color: #5cb8e4">LLM05: Improper Output Handling</span>**
 XSS via LLM output rendered in browser.
 _Fix: Always escape. Never_ `| safe` _on LLM output._
 
@@ -227,7 +207,7 @@ Your employees are the threat vector.
 🌟 HERO DEMO 2
 ===
 
-📰 <span style="color: #4ecca3">LLM09: Misinformation</span>
+📰 <span style="color: #5cb8e4">LLM09: Misinformation</span>
 
 `python3 LLM09-misinformation/web.py`
 
@@ -297,7 +277,7 @@ You can reduce them. You **cannot** eliminate them.
 🌟 HERO DEMO 3
 ===
 
-🤖 <span style="color: #4ecca3">LLM06: Excessive Agency</span>
+🤖 <span style="color: #5cb8e4">LLM06: Excessive Agency</span>
 
 `python3 LLM06-excessive-agency/web.py`
 
@@ -329,20 +309,7 @@ Your AI agent's promises are **your** promises.
 🧠 Least Privilege (1975)
 ===
 
-```
-  ┌──────────────────────────────────────────┐
-  │         What the agent NEEDS:            │
-  │         📖 SELECT (read data)            │
-  ├──────────────────────────────────────────┤
-  │         What the agent GOT:              │
-  │         📖 SELECT                        │
-  │         ✏️  INSERT, UPDATE               │
-  │         🗑️  DELETE                       │
-  │         💀 DROP TABLE                    │
-  │         ☠️  DROP DATABASE                │
-  │         🔥 EXECUTE SHELL                 │
-  └──────────────────────────────────────────┘
-```
+![](assets/least-privilege.png)
 
 <!-- pause -->
 
@@ -361,7 +328,7 @@ Don't give the intern the root password, even if the intern is very smart.
 ⚡ Speed Round: Cost & Consumption
 ===
 
-💸 **<span style="color: #4ecca3">LLM10: Unbounded Consumption</span>**
+💸 **<span style="color: #5cb8e4">LLM10: Unbounded Consumption</span>**
 
 2 prompts → **$350+** in tokens
 
@@ -387,7 +354,7 @@ _Fix: Token budgets, circuit breakers, Bedrock maxTokens._
 🌟 HERO DEMO 4
 ===
 
-📦 <span style="color: #4ecca3">LLM03: Supply Chain Vulnerabilities</span>
+📦 <span style="color: #5cb8e4">LLM03: Supply Chain Vulnerabilities</span>
 
 `python3 LLM03-supply-chain/demo.py`
 
@@ -413,13 +380,13 @@ The AI supply chain attack surface is _massive_ and mostly unaudited.
 ⚡ Speed Round: Data & Embeddings
 ===
 
-🧪 **<span style="color: #4ecca3">LLM04: Data Poisoning</span>** _(CLI)_
+🧪 **<span style="color: #5cb8e4">LLM04: Data Poisoning</span>** _(CLI)_
 Real sklearn model trained clean → poisoned live. Predictions flip.
 _Fix: Outlier detection, AIBOM, canary samples._
 
 <!-- pause -->
 
-🎯 **<span style="color: #4ecca3">LLM08: Vector & Embedding Weaknesses</span>** _(Browser)_
+🎯 **<span style="color: #5cb8e4">LLM08: Vector & Embedding Weaknesses</span>** _(Browser)_
 Real ChromaDB — poisoned docs rank #1. Toggle trust scoring to fix.
 _Fix: Source trust scoring, content integrity monitoring._
 
@@ -561,17 +528,7 @@ Goodhart's Law
 
 <!-- pause -->
 
-```
-  Training objective: "Be helpful" ──────────────────▶ 📈 Maximize
-                                                          │
-  Side effects:                                           │
-    • Leaks secrets (being helpful!)                      │
-    • Follows injections (being compliant!)               │
-    • Fabricates citations (being thorough!)              │
-    • Drops tables (being efficient!)                     │
-                                                          ▼
-                                              🎯 Helpful AND Dangerous
-```
+![](assets/goodhart.png)
 
 <!-- end_slide -->
 
