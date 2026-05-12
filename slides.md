@@ -482,6 +482,38 @@ But half the OWASP Top 10 is catchable **before we deploy.**
 
 <!-- end_slide -->
 
+The Only Mental Model You Need
+===
+
+Don't memorise all 10. Just remember **two checkpoints:**
+
+```
+  INPUT              LLM              OUTPUT
+    │                 │                 │
+    ▼                 │                 ▼
+┌────────┐            │           ┌────────┐
+│ Don't  │            │           │ Don't  │
+│ trust  │ ──────────▶│──────────▶│ trust  │
+│  this  │            │           │  this  │
+└────────┘            │           └────────┘
+```
+
+<!-- pause -->
+
+**One question at every integration point:**
+
+> _"What's the worst that happens if this input is malicious — or this output is wrong?"_
+
+<!-- pause -->
+
+| Don't trust INPUT | Don't trust OUTPUT |
+|---|---|
+| Injection, Supply Chain, Poisoning, Prompt Leakage, Vector Attacks | Info Disclosure, XSS, Excessive Agency, Misinformation, Cost |
+
+If you can answer that question, you'll add the right guardrail **every time.**
+
+<!-- end_slide -->
+
 <!-- alignment: left -->
 
 <!-- speaker_note: "JOKE — Remember: your LLM is a very smart intern with no judgment, no memory of yesterday's mistakes, and access to your production database. Treat it accordingly." -->
