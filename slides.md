@@ -506,11 +506,27 @@ Don't memorise all 10. Just remember **two checkpoints:**
 
 <!-- pause -->
 
-| Don't trust INPUT | Don't trust OUTPUT |
-|---|---|
-| Injection, Supply Chain, Poisoning, Prompt Leakage, Vector Attacks | Info Disclosure, XSS, Excessive Agency, Misinformation, Cost |
+<!-- column_layout: [1, 1] -->
 
-If you can answer that question, you'll add the right guardrail **every time.**
+<!-- column: 0 -->
+
+**Don't trust INPUT:**
+* Injection
+* Supply Chain
+* Poisoning
+* Prompt Leakage
+* Vector Attacks
+
+<!-- column: 1 -->
+
+**Don't trust OUTPUT:**
+* Info Disclosure
+* XSS
+* Excessive Agency
+* Misinformation
+* Cost
+
+<!-- reset_layout -->
 
 <!-- end_slide -->
 
