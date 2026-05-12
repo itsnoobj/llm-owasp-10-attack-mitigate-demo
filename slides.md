@@ -428,7 +428,7 @@ Semantic similarity ≠ factual alignment.
 
 <!-- end_slide -->
 
-So... What Do We Do?
+We Already Know This
 ===
 
 10 vulnerabilities. Scary demos. But here's the thing:
@@ -436,11 +436,6 @@ So... What Do We Do?
 <!-- pause -->
 
 **Most of this maps to patterns we've used for decades.**
-
-<!-- end_slide -->
-
-We Already Know This
-===
 
 <!-- column_layout: [1, 1] -->
 
@@ -487,48 +482,33 @@ But half the OWASP Top 10 is catchable **before we deploy.**
 
 <!-- end_slide -->
 
-<!-- jump_to_middle -->
-<!-- alignment: center -->
+<!-- alignment: left -->
 
 <!-- speaker_note: "JOKE — Remember: your LLM is a very smart intern with no judgment, no memory of yesterday's mistakes, and access to your production database. Treat it accordingly." -->
 
 The End
 ===
 
-<!-- column_layout: [2, 1] -->
+<!-- column_layout: [2, 3] -->
 
 <!-- column: 0 -->
 
-**<span style="color: #f9e2af">Those 15 words still work. But now we know why — and what to do.</span>** 🛡️
+**<span style="color: #f9e2af">Those 15 words still work.
+But now we know why — and what to do.</span>** 🛡️
 
 **Questions?**
 
-📬 **Get in touch:**
-<span style="color: #89b4fa">jeevan.dc24@alumni.iimb.ac.in</span>
+📬 <span style="color: #89b4fa">jeevan.dc24@alumni.iimb.ac.in</span>
 
-🌐 **I write at** <span style="color: #89b4fa">noobj.me</span>
+🌐 <span style="color: #89b4fa">noobj.me</span>
 
-🔗 **OWASP Top 10 for LLMs** — genai.owasp.org/llm-top-10
-
-<!-- column: 1 -->
+<!-- new_lines: 2 -->
 
 ![](assets/thank-you-bow.gif)
 
-<!-- reset_layout -->
-
-<!-- column_layout: [1, 2, 1] -->
-
-<!-- column: 0 -->
-
 <!-- column: 1 -->
 
-**Slides & Code:**
-
 ![QR](ascii-smuggling/qr.png)
-
-`github.com/itsnoobj/llm-owasp-10-attack-mitigate-demo`
-
-<!-- column: 2 -->
 
 <!-- reset_layout -->
 
