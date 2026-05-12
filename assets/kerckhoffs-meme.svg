@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="700" height="300" fill="#1e1e2e"/>
+
+  <!-- Top row: reject -->
+  <rect x="30" y="20" width="120" height="120" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="2"/>
+  <text x="90" y="85" text-anchor="middle" fill="#f38ba8" font-size="50">🙅</text>
+
+  <rect x="170" y="20" width="500" height="120" rx="8" fill="#313244" stroke="#45475a" stroke-width="1.5"/>
+  <text x="420" y="65" text-anchor="middle" fill="#cdd6f4" font-size="18">Hiding secrets in system prompts</text>
+  <text x="420" y="95" text-anchor="middle" fill="#585b70" font-size="14">"nobody will ever ask for it in French"</text>
+  <text x="420" y="120" text-anchor="middle" fill="#f38ba8" font-size="12">security through obscurity</text>
+
+  <!-- Bottom row: approve -->
+  <rect x="30" y="160" width="120" height="120" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="2"/>
+  <text x="90" y="225" text-anchor="middle" fill="#a6e3a1" font-size="50">😎</text>
+
+  <rect x="170" y="160" width="500" height="120" rx="8" fill="#313244" stroke="#45475a" stroke-width="1.5"/>
+  <text x="420" y="205" text-anchor="middle" fill="#cdd6f4" font-size="18">Systems that work even when prompts leak</text>
+  <text x="420" y="235" text-anchor="middle" fill="#585b70" font-size="14">layered defenses, no single point of failure</text>
+  <text x="420" y="260" text-anchor="middle" fill="#a6e3a1" font-size="12">Kerckhoffs's Principle ✓</text>
+</svg>

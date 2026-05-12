@@ -1,18 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" style="background:#0f0f1a">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" font-family="monospace">
+  <rect width="520" height="380" fill="#1e1e2e"/>
+
   <!-- What agent NEEDS -->
-  <rect x="60" y="30" width="300" height="120" rx="12" fill="#0a2a0a" stroke="#4ecca3" stroke-width="2"/>
-  <text x="210" y="60" text-anchor="middle" fill="#4ecca3" font-family="system-ui" font-size="13" font-weight="bold">What the agent NEEDS</text>
-  <text x="210" y="95" text-anchor="middle" fill="#e0e0e0" font-family="system-ui" font-size="16">📖 SELECT</text>
-  <text x="210" y="125" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">(read data — that's it)</text>
+  <rect x="30" y="20" width="460" height="70" rx="8" fill="#313244" stroke="#a6e3a1" stroke-width="1.5"/>
+  <text x="260" y="45" text-anchor="middle" fill="#a6e3a1" font-size="12" font-weight="bold">What the agent NEEDS:</text>
+  <text x="260" y="70" text-anchor="middle" fill="#cdd6f4" font-size="11">📖 SELECT (read data)</text>
 
   <!-- What agent GOT -->
-  <rect x="440" y="10" width="300" height="270" rx="12" fill="#2a0a0a" stroke="#e94560" stroke-width="2"/>
-  <text x="590" y="40" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="13" font-weight="bold">What the agent GOT</text>
-  <text x="590" y="75" fill="#4ecca3" font-family="system-ui" font-size="13" text-anchor="middle">📖 SELECT</text>
-  <text x="590" y="105" fill="#e0e0e0" font-family="system-ui" font-size="13" text-anchor="middle">✏️ INSERT, UPDATE</text>
-  <text x="590" y="135" fill="#f59e0b" font-family="system-ui" font-size="13" text-anchor="middle">🗑️ DELETE</text>
-  <text x="590" y="165" fill="#e94560" font-family="system-ui" font-size="13" text-anchor="middle">💀 DROP TABLE</text>
-  <text x="590" y="195" fill="#e94560" font-family="system-ui" font-size="13" text-anchor="middle">☠️ DROP DATABASE</text>
-  <text x="590" y="225" fill="#e94560" font-family="system-ui" font-size="13" text-anchor="middle">🔥 EXECUTE SHELL</text>
-  <text x="590" y="255" fill="#e94560" font-family="system-ui" font-size="13" text-anchor="middle">☁️ TERMINATE EC2</text>
+  <rect x="30" y="110" width="460" height="180" rx="8" fill="#313244" stroke="#f38ba8" stroke-width="1.5"/>
+  <text x="260" y="135" text-anchor="middle" fill="#f38ba8" font-size="12" font-weight="bold">What the agent GOT:</text>
+  <text x="260" y="160" text-anchor="middle" fill="#cdd6f4" font-size="11">📖 SELECT</text>
+  <text x="260" y="180" text-anchor="middle" fill="#cdd6f4" font-size="11">✏️  INSERT, UPDATE</text>
+  <text x="260" y="200" text-anchor="middle" fill="#f9e2af" font-size="11">🗑️  DELETE</text>
+  <text x="260" y="220" text-anchor="middle" fill="#f38ba8" font-size="11">💀 DROP TABLE</text>
+  <text x="260" y="240" text-anchor="middle" fill="#f38ba8" font-size="11">☠️  DROP DATABASE</text>
+  <text x="260" y="260" text-anchor="middle" fill="#f38ba8" font-size="11" font-weight="bold">🔥 EXECUTE SHELL</text>
+
+  <!-- Bottom insight -->
+  <rect x="50" y="315" width="420" height="45" rx="8" fill="#313244" stroke="#cba6f7" stroke-width="1.5"/>
+  <text x="260" y="337" text-anchor="middle" fill="#cba6f7" font-size="10">Don't give the intern the root password,</text>
+  <text x="260" y="352" text-anchor="middle" fill="#cba6f7" font-size="10">even if the intern is very smart.</text>
 </svg>

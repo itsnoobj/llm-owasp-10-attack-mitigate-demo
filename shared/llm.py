@@ -9,7 +9,10 @@ Usage:
     response = llm.invoke("What is 2+2?", system="You are a math tutor.")
     print(llm.mode)  # "bedrock" or "simulated"
 """
-import json, os
+import json, os, logging
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+log = logging.getLogger("llm")
 
 MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "anthropic.claude-3-haiku-20240307-v1:0")
 REGION = os.environ.get("AWS_REGION", os.environ.get("AWS_DEFAULT_REGION", "eu-west-1"))
@@ -21,16 +24,21 @@ class LLM:
         if mode in ("auto", "bedrock"):
             try:
                 import boto3
+                log.info(f"Attempting Bedrock connection (region={REGION}, model={MODEL_ID})")
                 self._client = boto3.client("bedrock-runtime", region_name=REGION)
                 # Validate creds with a real API call (lightweight)
-                boto3.client("bedrock", region_name=REGION).list_foundation_models(maxResults=1)
+                boto3.client("bedrock", region_name=REGION).list_foundation_models(byProvider="anthropic")
                 self.mode = "bedrock"
-            except Exception:
+                log.info("✅ Bedrock connected — LIVE MODE")
+            except Exception as e:
+                log.warning(f"❌ Bedrock connection failed: {e}")
                 if mode == "bedrock":
                     raise
                 self.mode = "simulated"
+                log.info("⚠️  Falling back to SIMULATED mode")
         else:
             self.mode = "simulated"
+            log.info("⚠️  Running in SIMULATED mode (forced)")
 
     @property
     def is_live(self):
@@ -39,7 +47,11 @@ class LLM:
     def invoke(self, prompt, system=None, max_tokens=1024, fallback=None):
         """Call Bedrock or return fallback in simulated mode."""
         if self.mode == "bedrock":
-            return self._call_bedrock(prompt, system, max_tokens)
+            log.info(f"🔄 Calling Bedrock: {prompt[:60]}...")
+            resp = self._call_bedrock(prompt, system, max_tokens)
+            log.info(f"✅ Bedrock response: {len(resp)} chars")
+            return resp
+        log.info(f"🟡 Simulated response for: {prompt[:60]}...")
         if fallback is not None:
             return fallback
         return f"[SIMULATED] Response to: {prompt[:80]}..."

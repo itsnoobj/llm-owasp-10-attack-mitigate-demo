@@ -27,8 +27,8 @@ def body_html(secret_context: str) -> str:
       <div id="leaks"></div>
     </div>
     <div class="card" style="margin-top:8px;">
-      <h3 style="font-size:0.85rem;color:#888;margin-bottom:8px;">📋 Context loaded (hidden from user)</h3>
-      <pre style="font-size:0.7rem;color:#666;white-space:pre-wrap;word-break:break-all;">""" + secret_context + """</pre>
+      <h3 style="font-size:0.85rem;color:#f9e2af;margin-bottom:8px;">🧠 Full System Prompt</h3>
+      <pre style="font-size:0.7rem;color:#888;white-space:pre-wrap;word-break:break-all;" id="system-prompt">""" + secret_context + """</pre>
     </div>
   </div>
 </div>"""

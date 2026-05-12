@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="800" height="300" fill="none"/>
+
+  <text x="400" y="100" text-anchor="middle" fill="#cdd6f4" font-size="32">What if I told you a <tspan fill="#f38ba8" font-weight="bold">15-word sentence</tspan> can hijack</text>
+  <text x="400" y="145" text-anchor="middle" fill="#cdd6f4" font-size="32">most AI assistants in production today?</text>
+
+  <text x="400" y="240" text-anchor="middle" fill="#585b70" font-size="26">Not a zero-day. Not a CVE. Just... <tspan fill="#cba6f7" font-style="italic">English.</tspan></text>
+</svg>

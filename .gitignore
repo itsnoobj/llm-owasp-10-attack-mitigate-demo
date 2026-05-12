@@ -22,3 +22,5 @@ build/
 # Demo temp files
 /tmp/llm*
 *.db
+stolen_credentials.log
+dependency-graph.svg

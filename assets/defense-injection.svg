@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="monospace">
+  <rect width="900" height="500" fill="#1e1e2e"/>
+
+  <!-- Divider lines -->
+  <line x1="450" y1="30" x2="450" y2="470" stroke="#45475a" stroke-width="1.5"/>
+  <line x1="30" y1="250" x2="870" y2="250" stroke="#45475a" stroke-width="1.5"/>
+
+  <!-- Q1: Input Classifiers (top-left) -->
+  <text x="225" y="70" text-anchor="middle" fill="#a6e3a1" font-size="20" font-weight="bold">Input Classifiers</text>
+  <text x="225" y="105" text-anchor="middle" fill="#cdd6f4" font-size="11">Scan input before it</text>
+  <text x="225" y="125" text-anchor="middle" fill="#cdd6f4" font-size="11">reaches the model</text>
+  <text x="225" y="160" text-anchor="middle" fill="#585b70" font-size="10">regex · fine-tuned BERT</text>
+  <text x="225" y="180" text-anchor="middle" fill="#585b70" font-size="10">pattern matching</text>
+  <text x="225" y="215" text-anchor="middle" fill="#f38ba8" font-size="11">⛔ "Ignore all previous" → blocked</text>
+
+  <!-- Q2: Role Separation (top-right) -->
+  <text x="675" y="70" text-anchor="middle" fill="#89b4fa" font-size="20" font-weight="bold">Role Separation</text>
+  <text x="675" y="105" text-anchor="middle" fill="#cdd6f4" font-size="11">System ≠ User messages</text>
+  <text x="675" y="125" text-anchor="middle" fill="#cdd6f4" font-size="11">as distinct channels</text>
+  <text x="675" y="160" text-anchor="middle" fill="#585b70" font-size="10">system role · user role</text>
+  <text x="675" y="180" text-anchor="middle" fill="#585b70" font-size="10">soft architectural boundary</text>
+  <text x="675" y="215" text-anchor="middle" fill="#f9e2af" font-size="11">⚠️ not bulletproof, but raises the bar</text>
+
+  <!-- Q3: LLM Guardrails (bottom-left) -->
+  <text x="225" y="290" text-anchor="middle" fill="#f9e2af" font-size="20" font-weight="bold">LLM Guardrails</text>
+  <text x="225" y="325" text-anchor="middle" fill="#cdd6f4" font-size="11">Runtime content filters</text>
+  <text x="225" y="345" text-anchor="middle" fill="#cdd6f4" font-size="11">on input + output</text>
+  <text x="225" y="380" text-anchor="middle" fill="#585b70" font-size="10">denied topics · PII redaction</text>
+  <text x="225" y="400" text-anchor="middle" fill="#585b70" font-size="10">content policies · word filters</text>
+  <text x="225" y="435" text-anchor="middle" fill="#a6e3a1" font-size="11">✅ catches what slips through</text>
+
+  <!-- Q4: Dual-LLM (bottom-right) -->
+  <text x="675" y="290" text-anchor="middle" fill="#cba6f7" font-size="20" font-weight="bold">Dual-LLM (CaMeL)</text>
+  <text x="675" y="325" text-anchor="middle" fill="#cdd6f4" font-size="11">Planner sees user input</text>
+  <text x="675" y="345" text-anchor="middle" fill="#cdd6f4" font-size="11">Executor only sees plan</text>
+  <text x="675" y="380" text-anchor="middle" fill="#585b70" font-size="10">injection hits planner</text>
+  <text x="675" y="400" text-anchor="middle" fill="#585b70" font-size="10">but planner has no tools</text>
+  <text x="675" y="435" text-anchor="middle" fill="#a6e3a1" font-size="11">✅ closest to a real fix</text>
+</svg>
