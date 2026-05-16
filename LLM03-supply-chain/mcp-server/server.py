@@ -138,7 +138,14 @@ def dependency_graph(path: str = ".") -> str:
         lines.append(f"    class {','.join(sorted(ext_deps))} ext")
 
     lines.append("```")
-    return "\n".join(lines)
+    result = "\n".join(lines)
+
+    # Write to /tmp for easy copying
+    out_path = os.path.join(tempfile.gettempdir(), "codegraph.mmd")
+    with open(out_path, "w") as f:
+        f.write(result)
+
+    return result + f"\n\n📄 Graph saved to: {out_path}"
 
 
 @mcp.tool()

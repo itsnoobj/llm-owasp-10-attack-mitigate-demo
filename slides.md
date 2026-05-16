@@ -343,19 +343,19 @@ The solution is the same as 1982: **redundancy, verification, and consensus.**
 
 🔑 **<span style="color: #5cb8e4">LLM07: System Prompt Leakage</span>**
 Translation trick extracts pricing, admin codes, GDPR violations.
-_Fix: Never put secrets in prompts._
+_<span style="color: #a6e3a1">Fix: Never put secrets in prompts.</span>_
 
 <!-- pause -->
 
 🔓 **<span style="color: #5cb8e4">LLM02: Sensitive Info Disclosure</span>**
 Coding assistant dumps `.env` secrets as "helpful examples."
-_Fix: Output regex filters + don't put secrets in context._
+_<span style="color: #a6e3a1">Fix: Output regex filters + don't put secrets in context.</span>_
 
 <!-- pause -->
 
 🌐 **<span style="color: #5cb8e4">LLM05: Improper Output Handling</span>**
 XSS via LLM output rendered in browser.
-_Fix: Always escape. Never_ `| safe` _on LLM output._
+_<span style="color: #a6e3a1">Fix: Always escape. Never</span>_ `| safe` _<span style="color: #a6e3a1">on LLM output.</span>_
 
 <!-- speaker_note: "Run each web demo quickly. LLM07 on 5007, LLM02 on 5002, LLM05 on 5050. Show the attack, name the fix, move on." -->
 
@@ -366,13 +366,13 @@ _Fix: Always escape. Never_ `| safe` _on LLM output._
 
 🧪 **<span style="color: #5cb8e4">LLM04: Data Poisoning</span>** _(CLI)_
 Real sklearn model trained clean → poisoned live. Predictions flip.
-_Fix: Outlier detection, AIBOM, canary samples._
+_<span style="color: #a6e3a1">Fix: Outlier detection, AIBOM, canary samples.</span>_
 
 <!-- pause -->
 
 🎯 **<span style="color: #5cb8e4">LLM08: Vector & Embedding Weaknesses</span>** _(Browser)_
 Real ChromaDB — poisoned docs rank #1. Toggle trust scoring to fix.
-_Fix: Source trust scoring, content integrity monitoring._
+_<span style="color: #a6e3a1">Fix: Source trust scoring, content integrity monitoring.</span>_
 
 <!-- pause -->
 
@@ -387,23 +387,23 @@ Semantic similarity ≠ factual alignment.
 
 💸 **<span style="color: #5cb8e4">LLM10: Unbounded Consumption</span>**
 
-<!-- column_layout: [1, 1] -->
+<!-- column_layout: [3, 1] -->
 
 <!-- column: 0 -->
 
-![](assets/money-printer.jpg)
+![image:width:90%](assets/phoenix-tracing.png)
 
 <!-- column: 1 -->
 
-![](assets/phoenix-tracing.png)
-
-<!-- reset_layout -->
+![](assets/money-printer.jpg)
 
 **Defend:**
 
-* Monitor token usage during development (tracing tools)
-* Set **hard limits** at multiple layers (maxTokens, request timeouts, circuit breakers)
-* Set **billing alerts** and spending caps on cloud provider
+* Monitor token usage (tracing)
+* **Hard limits** at every layer
+* **Billing alerts** + spending caps
+
+<!-- reset_layout -->
 
 <!-- speaker_note: "JOKE — The agent wasn't malicious. It was just... thorough. The most expensive word in AI is 'comprehensive.'" -->
 
@@ -466,7 +466,7 @@ But half the OWASP Top 10 is catchable **before we deploy.**
 The Only Mental Model You Need
 ===
 
-Don't memorise all 10. Just remember **two checkpoints:**
+Just remember **two checkpoints:**
 
 ```
   INPUT              LLM              OUTPUT
