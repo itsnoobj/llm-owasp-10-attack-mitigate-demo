@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="monospace">
+  <rect width="900" height="500" fill="#1e1e2e"/>
+
+  <!-- Divider lines -->
+  <line x1="450" y1="30" x2="450" y2="470" stroke="#45475a" stroke-width="1.5"/>
+  <line x1="30" y1="250" x2="870" y2="250" stroke="#45475a" stroke-width="1.5"/>
+
+  <!-- Q1: Pin Dependencies (top-left) -->
+  <text x="225" y="70" text-anchor="middle" fill="#a6e3a1" font-size="20" font-weight="bold">Pin Dependencies</text>
+  <text x="225" y="105" text-anchor="middle" fill="#cdd6f4" font-size="11">Exact versions, lock files,</text>
+  <text x="225" y="125" text-anchor="middle" fill="#cdd6f4" font-size="11">hash verification</text>
+  <text x="225" y="160" text-anchor="middle" fill="#585b70" font-size="10">pip freeze · package-lock.json</text>
+  <text x="225" y="180" text-anchor="middle" fill="#585b70" font-size="10">--require-hashes</text>
+  <text x="225" y="215" text-anchor="middle" fill="#f38ba8" font-size="11">⛔ no ">=1.0" — pin to "==1.0.3"</text>
+
+  <!-- Q2: Audit MCP Tools (top-right) -->
+  <text x="675" y="70" text-anchor="middle" fill="#89b4fa" font-size="20" font-weight="bold">Audit MCP Tools</text>
+  <text x="675" y="105" text-anchor="middle" fill="#cdd6f4" font-size="11">Read every tool description —</text>
+  <text x="675" y="125" text-anchor="middle" fill="#cdd6f4" font-size="11">check for hidden instructions</text>
+  <text x="675" y="160" text-anchor="middle" fill="#585b70" font-size="10">tool descriptions influence LLM</text>
+  <text x="675" y="180" text-anchor="middle" fill="#585b70" font-size="10">invisible Unicode · prompt injection</text>
+  <text x="675" y="215" text-anchor="middle" fill="#f9e2af" font-size="11">⚠️ the description IS the attack vector</text>
+
+  <!-- Q3: Sandbox Execution (bottom-left) -->
+  <text x="225" y="290" text-anchor="middle" fill="#f9e2af" font-size="20" font-weight="bold">Sandbox Execution</text>
+  <text x="225" y="325" text-anchor="middle" fill="#cdd6f4" font-size="11">Containers, network isolation,</text>
+  <text x="225" y="345" text-anchor="middle" fill="#cdd6f4" font-size="11">filesystem restrictions</text>
+  <text x="225" y="380" text-anchor="middle" fill="#585b70" font-size="10">Docker · gVisor · seccomp</text>
+  <text x="225" y="400" text-anchor="middle" fill="#585b70" font-size="10">no outbound network by default</text>
+  <text x="225" y="435" text-anchor="middle" fill="#a6e3a1" font-size="11">✅ blast radius = container only</text>
+
+  <!-- Q4: AIBOM (bottom-right) -->
+  <text x="675" y="290" text-anchor="middle" fill="#cba6f7" font-size="20" font-weight="bold">AIBOM</text>
+  <text x="675" y="325" text-anchor="middle" fill="#cdd6f4" font-size="11">AI Bill of Materials —</text>
+  <text x="675" y="345" text-anchor="middle" fill="#cdd6f4" font-size="11">know what's in the stack</text>
+  <text x="675" y="380" text-anchor="middle" fill="#585b70" font-size="10">models · datasets · tools · plugins</text>
+  <text x="675" y="400" text-anchor="middle" fill="#585b70" font-size="10">provenance tracking</text>
+  <text x="675" y="435" text-anchor="middle" fill="#a6e3a1" font-size="11">✅ can't secure what you can't see</text>
+</svg>

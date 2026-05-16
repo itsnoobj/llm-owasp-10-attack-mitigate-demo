@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="monospace">
+  <rect width="900" height="500" fill="#1e1e2e"/>
+
+  <!-- Divider lines -->
+  <line x1="450" y1="30" x2="450" y2="470" stroke="#45475a" stroke-width="1.5"/>
+  <line x1="30" y1="250" x2="870" y2="250" stroke="#45475a" stroke-width="1.5"/>
+
+  <!-- Q1: Scope Tool Access (top-left) -->
+  <text x="225" y="70" text-anchor="middle" fill="#a6e3a1" font-size="20" font-weight="bold">Scope Tool Access</text>
+  <text x="225" y="105" text-anchor="middle" fill="#cdd6f4" font-size="11">Only expose tools the</text>
+  <text x="225" y="125" text-anchor="middle" fill="#cdd6f4" font-size="11">agent actually needs</text>
+  <text x="225" y="160" text-anchor="middle" fill="#585b70" font-size="10">allowlist · deny-by-default</text>
+  <text x="225" y="180" text-anchor="middle" fill="#585b70" font-size="10">no DELETE, no DROP TABLE</text>
+  <text x="225" y="215" text-anchor="middle" fill="#f38ba8" font-size="11">⛔ read-only unless explicitly needed</text>
+
+  <!-- Q2: Tiered Permissions (top-right) -->
+  <text x="675" y="70" text-anchor="middle" fill="#89b4fa" font-size="20" font-weight="bold">Tiered Permissions</text>
+  <text x="675" y="105" text-anchor="middle" fill="#cdd6f4" font-size="11">Low-risk actions: auto-approve</text>
+  <text x="675" y="125" text-anchor="middle" fill="#cdd6f4" font-size="11">High-risk actions: require approval</text>
+  <text x="675" y="160" text-anchor="middle" fill="#585b70" font-size="10">SELECT → auto · DELETE → confirm</text>
+  <text x="675" y="180" text-anchor="middle" fill="#585b70" font-size="10">escalation policies</text>
+  <text x="675" y="215" text-anchor="middle" fill="#a6e3a1" font-size="11">✅ proportional trust</text>
+
+  <!-- Q3: Human-in-the-Loop (bottom-left) -->
+  <text x="225" y="290" text-anchor="middle" fill="#f9e2af" font-size="20" font-weight="bold">Human-in-the-Loop</text>
+  <text x="225" y="325" text-anchor="middle" fill="#cdd6f4" font-size="11">Destructive actions need</text>
+  <text x="225" y="345" text-anchor="middle" fill="#cdd6f4" font-size="11">human confirmation</text>
+  <text x="225" y="380" text-anchor="middle" fill="#585b70" font-size="10">approval workflows</text>
+  <text x="225" y="400" text-anchor="middle" fill="#585b70" font-size="10">confirmation prompts</text>
+  <text x="225" y="435" text-anchor="middle" fill="#f9e2af" font-size="11">⚠️ "Agent wants to DROP TABLE. Allow?"</text>
+
+  <!-- Q4: Audit Trails (bottom-right) -->
+  <text x="675" y="290" text-anchor="middle" fill="#cba6f7" font-size="20" font-weight="bold">Audit Trails</text>
+  <text x="675" y="325" text-anchor="middle" fill="#cdd6f4" font-size="11">Log every tool call</text>
+  <text x="675" y="345" text-anchor="middle" fill="#cdd6f4" font-size="11">with full context</text>
+  <text x="675" y="380" text-anchor="middle" fill="#585b70" font-size="10">who · what · when · why</text>
+  <text x="675" y="400" text-anchor="middle" fill="#585b70" font-size="10">immutable logs · alerting</text>
+  <text x="675" y="435" text-anchor="middle" fill="#a6e3a1" font-size="11">✅ detect abuse after the fact</text>
+</svg>

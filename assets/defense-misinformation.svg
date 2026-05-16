@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" font-family="monospace">
+  <rect width="900" height="500" fill="#1e1e2e"/>
+
+  <!-- Divider lines -->
+  <line x1="450" y1="30" x2="450" y2="470" stroke="#45475a" stroke-width="1.5"/>
+  <line x1="30" y1="250" x2="870" y2="250" stroke="#45475a" stroke-width="1.5"/>
+
+  <!-- Q1: Citation Verification (top-left) -->
+  <text x="225" y="70" text-anchor="middle" fill="#a6e3a1" font-size="20" font-weight="bold">Citation Verification</text>
+  <text x="225" y="105" text-anchor="middle" fill="#cdd6f4" font-size="11">Require sources for</text>
+  <text x="225" y="125" text-anchor="middle" fill="#cdd6f4" font-size="11">every factual claim</text>
+  <text x="225" y="160" text-anchor="middle" fill="#585b70" font-size="10">URL validation · source lookup</text>
+  <text x="225" y="180" text-anchor="middle" fill="#585b70" font-size="10">cross-reference checks</text>
+  <text x="225" y="215" text-anchor="middle" fill="#a6e3a1" font-size="11">✅ "According to [source]..."</text>
+
+  <!-- Q2: RAG (top-right) -->
+  <text x="675" y="70" text-anchor="middle" fill="#89b4fa" font-size="20" font-weight="bold">RAG — Ground in Facts</text>
+  <text x="675" y="105" text-anchor="middle" fill="#cdd6f4" font-size="11">Retrieve real documents</text>
+  <text x="675" y="125" text-anchor="middle" fill="#cdd6f4" font-size="11">before generating answers</text>
+  <text x="675" y="160" text-anchor="middle" fill="#585b70" font-size="10">vector search · knowledge base</text>
+  <text x="675" y="180" text-anchor="middle" fill="#585b70" font-size="10">curated corpus</text>
+  <text x="675" y="215" text-anchor="middle" fill="#f9e2af" font-size="11">⚠️ only as good as your docs</text>
+
+  <!-- Q3: Confidence Scoring (bottom-left) -->
+  <text x="225" y="290" text-anchor="middle" fill="#f9e2af" font-size="20" font-weight="bold">Confidence Scoring</text>
+  <text x="225" y="325" text-anchor="middle" fill="#cdd6f4" font-size="11">Measure entropy / uncertainty</text>
+  <text x="225" y="345" text-anchor="middle" fill="#cdd6f4" font-size="11">Flag low-confidence outputs</text>
+  <text x="225" y="380" text-anchor="middle" fill="#585b70" font-size="10">token probabilities · calibration</text>
+  <text x="225" y="400" text-anchor="middle" fill="#585b70" font-size="10">abstention thresholds</text>
+  <text x="225" y="435" text-anchor="middle" fill="#f38ba8" font-size="11">⛔ "I'm not sure" &gt; confident lie</text>
+
+  <!-- Q4: Never Trust as Fact (bottom-right) -->
+  <text x="675" y="290" text-anchor="middle" fill="#cba6f7" font-size="20" font-weight="bold">Never Trust as Fact</text>
+  <text x="675" y="325" text-anchor="middle" fill="#cdd6f4" font-size="11">LLM output = prediction</text>
+  <text x="675" y="345" text-anchor="middle" fill="#cdd6f4" font-size="11">not knowledge</text>
+  <text x="675" y="380" text-anchor="middle" fill="#585b70" font-size="10">human review · disclaimers</text>
+  <text x="675" y="400" text-anchor="middle" fill="#585b70" font-size="10">fact-check pipelines</text>
+  <text x="675" y="435" text-anchor="middle" fill="#a6e3a1" font-size="11">✅ design for "model is wrong"</text>
+</svg>

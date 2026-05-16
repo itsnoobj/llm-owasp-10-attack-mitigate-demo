@@ -220,14 +220,7 @@ He was sanctioned **$5,000**.
 🛡️ Defending Against Misinformation
 ===
 
-<!-- incremental_lists: true -->
-
-* **Citation verification**
-* **Retrieval-Augmented Generation (RAG)**
-* **Confidence scoring**
-* **Never trust LLM output as fact**
-
-<!-- pause -->
+![](assets/defense-misinformation.png)
 
 > The model doesn't know what's true. It knows what's _probable_. Our system must know the difference.
 
@@ -286,12 +279,7 @@ Our AI agent's promises are **our** promises.
 🛡️ Defending Against Excessive Agency
 ===
 
-* **Scope tool access**
-* **Tiered permissions**
-* **Human-in-the-loop**
-* **Audit trails**
-
-![](assets/xkcd-sudo.png)
+![](assets/defense-agency.png)
 
 <!-- end_slide -->
 
@@ -335,12 +323,7 @@ The AI supply chain attack surface is _massive_ and mostly unaudited.
 ✅ The Fix: Supply Chain
 ===
 
-<!-- incremental_lists: true -->
-
-* **Pin dependencies** — exact versions, lock files, hash verification
-* **Audit MCP tools** — read every tool description, check for hidden instructions
-* **Sandbox execution** — containers, network isolation, filesystem restrictions
-* **AIBOM** — AI Bill of Materials, know what's in the stack
+![](assets/defense-supply-chain.png)
 
 <!-- end_slide -->
 
