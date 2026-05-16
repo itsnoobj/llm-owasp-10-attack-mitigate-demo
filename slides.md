@@ -49,7 +49,7 @@ Today's Plan
 
 <!-- end_slide -->
 
-🧠 The Confused Deputy Problem
+🧠 The Black Box in the Middle
 ===
 
 ```
@@ -94,7 +94,7 @@ The Interface IS the Attack Surface
 
 <!-- pause -->
 
-LLMs are the first software component where **untrusted user input** and **system instructions** share the same channel.
+* First software component where **untrusted user input** and **system instructions** share the same channel
 
 <!-- pause -->
 
@@ -104,7 +104,6 @@ Yet hijacked by **15 words.**
 
 <!-- pause -->
 
-Let me show you.
 
 <!-- end_slide -->
 
@@ -142,8 +141,6 @@ Let me show you.
 
 🧠 Kerckhoffs's Principle (1883)
 ===
-
-No silver bullet. None relies on secrecy. By design.
 
 <!-- pause -->
 
@@ -246,9 +243,9 @@ He was sanctioned **$5,000**.
 🧠 Least Privilege — 50 Years Old, Still Ignored
 ===
 
-![](assets/least-privilege-meme.jpg)
-
 > "Every program and every user should operate using the **least set of privileges** necessary."
+
+![](assets/least-privilege-meme.jpg)
 
 <!-- end_slide -->
 
@@ -345,9 +342,10 @@ The AI supply chain attack surface is _massive_ and mostly unaudited.
 * **Sandbox execution** — containers, network isolation, filesystem restrictions
 * **AIBOM** — AI Bill of Materials, know what's in the stack
 
-<!-- pause -->
+<!-- end_slide -->
 
-🧠 **Byzantine Generals' Problem:**
+🧠 Byzantine Generals' Problem
+===
 
 ![](assets/byzantine-generals.png)
 
